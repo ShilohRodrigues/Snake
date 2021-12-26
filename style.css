@@ -1,0 +1,120 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Top Section */
+#top {
+  width: 90vmin;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#top h2 {
+  font-size: 4vmin;
+}
+
+#top p {
+  font-size: 3vmin;
+}
+
+/* Starting screen */
+.grid-box {
+  display: grid;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 9px 2px rgba(102, 102, 102, 0.7);
+  position: absolute;
+  padding: 4vmin;
+}
+
+#start-div {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2vmin;
+}
+
+#start-div h1 {
+  grid-column: 1 / span 3;
+  justify-self: center;
+  font-size: 5vmin;
+}
+
+#start-div #start-btn {
+  grid-column: 1 / span 2;
+}
+
+.button {
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 50px;
+  font-size: 2.5vmin;
+  padding: 1.5vmin;
+}
+
+.button:hover {
+  background-color: #000;
+  color: rgb(223, 223, 223);
+}
+
+#start-text {
+  position: absolute;
+  font-size: 3vmin;
+}
+
+/* Settings */
+#settings {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4vmin;
+  font-size: 4vmin;
+}
+
+#settings h2 {
+  grid-column: 1 / span 2;
+  justify-self: center;
+}
+
+.slider {
+  color: black;
+  height: 5vmin;
+  width: 25vmin;
+}
+
+.color {
+  height: 5vmin;
+  width: 10vmin;
+}
+
+/* Game styles */
+#game {
+  display: grid;
+  width: 90vmin;
+  height: 90vmin;
+  background-color: rgb(223, 223, 223);
+}
+
+.snake {
+  border: solid 0.05vmin rgb(223, 223, 223);
+  background-color: #000;
+}
+
+.apple {
+  border: solid 0.05vmin rgb(223, 223, 223);
+  background-color: #ff0000;
+}
+
+.hide {
+  display: none !important;
+}

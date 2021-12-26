@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/1498b3f271.js" crossorigin="anonymous"></script>
+  <title>Snake</title>
+</head>
+<body> 
+  <div id="top">
+    <h2>Snake</h2>
+    <p>Score: <span id="score">0</span></p>
+  </div>
+  <div id="start-div" class="grid-box">
+    <h1>Hungry&nbsp;Snake</h1>
+    <button id="start-btn" class="button">Start Game</button>
+    <button id="setting-btn" class="button"><i class="fas fa-cog"></i></button>
+  </div>
+  <form id="settings" class="grid-box hide">
+    <h2>Settings</h2>
+    <p>Speed: </p>
+    <input name="speed" id="speed" class="slider" type="range" step="1" min="1" max="5" value="3">
+    <p>Snake size: </p>
+    <input name="size" id="size" class="slider" type="range" step="1" min="1" max="5" value="1">
+    <p>Growth Factor: </p>
+    <input name="growth-factor" id="growth-factor" class="slider" type="range" step="1" min="1" max="5" value="3">
+    <p>Snake Color: </p>
+    <input name="s-color" id="s-color" class="color" type="color" value="#000000">
+    <p>Apple Color: </p>
+    <input name="a-color" id="a-color" class="color" type="color" value="#ff0000">
+    <button id="save-btn" class="button">Save</button>
+    <button type="reset" class="button">Reset</button>
+  </form>
+  <p id="start-text" class="hide">Press any key to start</p>
+  <div id="game"></div>
+  <script src="script.js"></script>
+</body>
+</html>
