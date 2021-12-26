@@ -2,6 +2,7 @@
 const game = document.getElementById("game")
 const startText = document.getElementById("start-text")
 const score = document.getElementById("score")
+const highscore = document.getElementById("highscore")
 const divStart = document.getElementById("start-div")
 const btnStart = document.getElementById("start-btn")
 const btnSett = document.getElementById("setting-btn")
@@ -41,6 +42,14 @@ const apple = { x:0 , y:0 }
 
 setGameSettings()
 function setGameSettings() {
+
+  //Get highscore if it exists
+  if (localStorage.getItem('highscore')) {
+    highscore.innerHTML = localStorage.getItem('highscore')
+  }
+  else {
+    highscore.innerHTML = 0
+  }
 
   //Set the size of the grid
   switch (sizeSlider.value) {
@@ -183,7 +192,7 @@ function gameLoop(timestamp) {
   //Update the time since the last frame
   lastFrameTime = timestamp
   turnedThisFrame = false
-  
+
   moveSnake()
   drawPieces()
   
@@ -290,6 +299,19 @@ function checkIfOnSnake(x, y, checkHead) {
 function endGame() {
 
   gameRunning = false
+
+  //Check if new score is above highscore if one exists in the localstorage
+  if (localStorage.getItem("highscore")) {
+    if(parseFloat(localStorage.getItem("highscore")) < parseFloat(score.innerHTML)) {
+      localStorage.setItem("highscore", score.innerHTML)
+    }
+  }
+  else {
+    localStorage.setItem("highscore", score.innerHTML)
+  }
+
+  highscore.innerHTML = localStorage.getItem("highscore")
+
   window.alert(`You scored ${score.innerHTML} points!`)
   score.innerHTML = 0
   snake.length = 1
