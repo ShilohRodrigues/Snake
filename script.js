@@ -34,7 +34,7 @@ let appleColor = '#FF0000'
 
 let lastFrameTime = 0 //time since the last frame was rendered
 let gameRunning = false; //Flag to track if the game has started or not
-let turnedThisFrame = false;
+const turns = []
 
 //Create the snake array and initialize it with the head of the snake in the center
 const snake = [
@@ -129,31 +129,7 @@ btnClose.addEventListener('click', () => {
 
 //Event listener to listen for the arrow key down
 function keyDownEvent(e) {
-  if (turnedThisFrame) return
-  turnedThisFrame = true;
-  lastDir = direction
-  switch (e.key) {
-    case 'ArrowUp':
-      if (lastDir.y !== 0) break
-      direction.x = 0
-      direction.y = -1
-      break
-    case 'ArrowDown':
-      if (lastDir.y !== 0) break
-      direction.x = 0
-      direction.y = 1
-      break
-    case 'ArrowLeft':
-      if (lastDir.x !== 0) break
-      direction.x = -1
-      direction.y = 0
-      break
-    case 'ArrowRight':
-      if (lastDir.x !== 0) break
-      direction.x = 1
-      direction.y = 0
-      break
-  }
+  turns.unshift(e.key) //Add the turn to the beginning of the turn array
   if (!gameRunning) startGame() //Start the game if it hasnt been started yet
 }
 
@@ -199,11 +175,41 @@ function gameLoop(timestamp) {
   if (timeSinceLastFrame < 1/speed) return
   //Update the time since the last frame
   lastFrameTime = timestamp
-  turnedThisFrame = false
 
+  processTurns()
   moveSnake()
   drawPieces()
   
+}
+
+function processTurns() {
+
+  lastDir = direction
+  switch (turns[turns.length-1]) {
+    case 'ArrowUp':
+      if (lastDir.y !== 0) break
+      direction.x = 0
+      direction.y = -1
+      break
+    case 'ArrowDown':
+      if (lastDir.y !== 0) break
+      direction.x = 0
+      direction.y = 1
+      break
+    case 'ArrowLeft':
+      if (lastDir.x !== 0) break
+      direction.x = -1
+      direction.y = 0
+      break
+    case 'ArrowRight':
+      if (lastDir.x !== 0) break
+      direction.x = 1
+      direction.y = 0
+      break
+  }
+  
+  turns.pop() //Remove the turn at the end of the arr
+
 }
 
 function moveSnake() {
@@ -319,7 +325,7 @@ function endGame() {
   }
 
   highscore.innerHTML = localStorage.getItem("highscore")
-  
+
   endScore.innerText = score.innerText
   endScreen.classList.remove('hide')
   score.innerHTML = 0
