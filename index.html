@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <script src="https://kit.fontawesome.com/1498b3f271.js" crossorigin="anonymous"></script>
   <title>Snake</title>
 </head>
@@ -14,7 +15,7 @@
     <p>Score: <span id="score">0</span> | Personal Best: <span id="highscore">0</span></p>
   </div>
   <div id="start-div" class="grid-box">
-    <h1>Hungry&nbsp;Snake</h1>
+    <h1>Snake</h1>
     <button id="start-btn" class="button">Start Game</button>
     <button id="setting-btn" class="button"><i class="fas fa-cog"></i></button>
   </div>
@@ -33,6 +34,10 @@
     <button id="save-btn" class="button">Save</button>
     <button type="reset" class="button">Reset</button>
   </form>
+  <div id="end-screen" class="grid-box hide">
+    <h2>You scored: <span id="end-score">0</span></h2>
+    <button id="close-btn"><i class="far fa-times-circle"></i></button>
+  </div>
   <p id="start-text" class="hide">Press any key to start</p>
   <div id="game"></div>
   <script src="script.js"></script>

@@ -10,6 +10,9 @@ const formSett = document.getElementById("settings")
 const btnSave = document.getElementById("save-btn")
 const snakeClass = document.getElementsByClassName("snake")
 const appleClass = document.getElementsByClassName("apple")
+const endScreen = document.getElementById('end-screen')
+const btnClose = document.getElementById('close-btn')
+const endScore = document.getElementById('end-score')
 
 //Form elements for settings
 const speedSlider = document.getElementById("speed")
@@ -117,6 +120,11 @@ btnSave.addEventListener('click', e => {
   setGameSettings();
   divStart.classList.remove('hide')
   formSett.classList.add('hide')
+})
+
+btnClose.addEventListener('click', () => {
+  endScreen.classList.add('hide')
+  divStart.classList.remove('hide')
 })
 
 //Event listener to listen for the arrow key down
@@ -311,11 +319,11 @@ function endGame() {
   }
 
   highscore.innerHTML = localStorage.getItem("highscore")
-
-  window.alert(`You scored ${score.innerHTML} points!`)
+  
+  endScore.innerText = score.innerText
+  endScreen.classList.remove('hide')
   score.innerHTML = 0
   snake.length = 1
-  divStart.classList.remove('hide')
   window.removeEventListener('keydown', keyDownEvent)
 
 }
