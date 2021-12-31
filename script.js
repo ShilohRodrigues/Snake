@@ -129,6 +129,12 @@ btnClose.addEventListener('click', () => {
 
 //Event listener to listen for the arrow key down
 function keyDownEvent(e) {
+  //To prevent scrolling with arrow keys
+  window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
   turns.unshift(e.key) //Add the turn to the beginning of the turn array
   if (!gameRunning) startGame() //Start the game if it hasnt been started yet
 }
