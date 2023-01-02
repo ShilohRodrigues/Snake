@@ -21,6 +21,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  background-color: white;
 }
 
 #top h2 {
@@ -120,6 +121,7 @@ body {
   width: 90vmin;
   height: 90vmin;
   background-color: rgb(223, 223, 223);
+  border: 0.05vmin solid black;
 }
 
 .snake {
